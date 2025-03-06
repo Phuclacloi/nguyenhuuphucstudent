@@ -1,39 +1,57 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Đây là phiên bản mô hình của POM (Project Object Model) -->
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- Nhóm ID của dự án, dùng để xác định dự án của bạn -->
     <groupId>com.mycompany</groupId>
+
+    <!-- Tên artifact của dự án, thường là tên của dự án -->
     <artifactId>nguyenhuuphuc</artifactId>
+
+    <!-- Phiên bản của dự án -->
     <version>1.0-SNAPSHOT</version>
+
+    <!-- Định dạng đóng gói, ở đây là dạng jar file -->
     <packaging>jar</packaging>
+
+    <!-- Định nghĩa các thuộc tính của dự án -->
     <properties>
+        <!-- Thiết lập mã hóa cho các file nguồn -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        <!-- Thiết lập phiên bản JDK sử dụng -->
         <maven.compiler.release>23</maven.compiler.release>
+        
+        <!-- Xác định lớp chính của dự án để chạy chương trình -->
         <exec.mainClass>com.mycompany.nguyenhuuphuc.Nguyenhuuphuc</exec.mainClass>
     </properties>
+
+    <!-- Định nghĩa các dependency (phụ thuộc) của dự án -->
     <dependencies>
-        <!-- Dependency TestNG -->
+        <!-- Dependency TestNG dùng để viết và chạy Unit Test -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.8.0</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>5.10.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.10.3</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
+    <!-- Cấu hình các plugin sử dụng trong dự án -->
+    <build>
+        <plugins>
+            <!-- Maven Surefire Plugin dùng để chạy các Unit Test -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <!-- Xác định file cấu hình TestNG -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
